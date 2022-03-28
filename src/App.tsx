@@ -1,12 +1,20 @@
 import React from 'react';
+import {useMeQuery} from "./generated/graphql";
 
 
+const App = () => {
 
-const App = () => (
+    const { data } = useMeQuery({
+        variables: {
+            login: "jjswifty"
+        }
+    })
 
-    <div className="App">
+    console.log(data)
+
+    return <div className="App">
 
     </div>
-);
+};
 
 export default App;

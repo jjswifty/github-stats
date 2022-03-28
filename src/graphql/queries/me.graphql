@@ -1,3 +1,5 @@
-query Me {
-    
+query Me ($login: String!) {
+    user (login: $login) {
+        bio
+    }
 }

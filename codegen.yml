@@ -1,8 +1,8 @@
 overwrite: true
 schema: "src/generated/githubAPI-schema-loader.js"
 documents:
-    - src/graphql/queries/*.graphql
-    - src/graphql/mutations/*.graphql
+    - src/**/*.graphql
+    - src/**/*.graphql
 generates:
     src/generated/graphql.tsx:
         plugins:

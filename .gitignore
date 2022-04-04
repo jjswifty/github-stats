@@ -19,7 +19,8 @@
 .env.production.local
 .idea
 
-src/generated/graphql.tsx
+schema.json
+__generated__
 
 npm-debug.log*
 yarn-debug.log*

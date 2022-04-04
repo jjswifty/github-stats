@@ -1,5 +1,0 @@
-query Me ($login: String!) {
-    user (login: $login) {
-        bio
-    }
-}

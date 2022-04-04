@@ -11,7 +11,7 @@ This is a kind of experiment - how convenient it will be with an increase in the
 - yarn apollo service:download --endpoint=https://api.github.com/graphql --header="Authorization: Bearer YOUR_GITHUB_API_TOKEN"
 - yarn run apollo:generate
 
-This 2 scripts allow you to download public graphql schema and generate types for schemas. 
+This 2 scripts allow you to download public graphql schema and generate types for them. 
 
 ### How to write some local queries:
 
@@ -21,7 +21,7 @@ This 2 scripts allow you to download public graphql schema and generate types fo
 - And finally - run "yarn run apollo:generate" to generate types for your new query.
 
 Remember, you need to regenerate your types each time you write a new query (not only local).
-You can see look inside this repository to learn more.
+You can look inside this repository to learn more.
 
 
 

@@ -1,8 +1,20 @@
-import {ChangeEvent, FC, useState} from "react";
-import {loginVar} from "@/apollo/queries/variables";
+import { ChangeEvent, FC, useEffect, useState } from "react";
+import {storage} from "@/lib/storage";
+import {cache} from "@/apollo/cache";
+import {IS_LOGGED_IN} from "@/apollo/queries/local/login";
+import { useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 
 export const AuthPage: FC = () => {
+
+    const navigate = useNavigate()
+    const { data } = useQuery(IS_LOGGED_IN)
+    const isAuth = data?.isLoggedIn
+
+    useEffect(() => {
+        if (isAuth) navigate("/profile")
+    }, [isAuth, navigate])
 
     const [login, setLogin] = useState<string>('')
 
@@ -10,13 +22,13 @@ export const AuthPage: FC = () => {
         setLogin(e.target.value)
     }
 
-    const buttonHandler = async () => {
-        const loginObj = {
-            name: login,
-            date: Date.now().toString()
-        }
-        loginVar(loginObj)
-        localStorage.setItem("login", JSON.stringify(loginObj))
+    const buttonHandler = (): void => {
+        storage.setItem("login", login)
+        cache.updateQuery({
+            query: IS_LOGGED_IN,
+        }, () => ({
+            isLoggedIn: true
+        }))
     }
 
     return (

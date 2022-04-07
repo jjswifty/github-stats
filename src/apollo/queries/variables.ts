@@ -1,13 +1,13 @@
-import {makeVar} from "@apollo/client";
+export {}
 
-interface Login {
-    name: string
-    date: string
-}
-
-const loginInitialValue: Login = {
-    name: '',
-    date: '',
-}
-
-export const loginVar = makeVar(loginInitialValue)
+// interface Login {
+//     name: string
+//     date: string
+// }
+//
+// const loginInitialValue: Login = {
+//     name: '',
+//     date: '',
+// }
+//
+// export const loginVar = makeVar(loginInitialValue)

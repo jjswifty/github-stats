@@ -1,11 +1,11 @@
 directive @client on FIELD # Обязательно, для того чтобы IDE понимала эту директиву в @client запросах!
 
-type Login {
-    name: String!
-    date: String!
-}
+# type Login {
+#     name: String!
+#     date: String!
+# }
 
 extend type Query {
-     login: Login!
+    isLoggedIn: Boolean!
 }
 

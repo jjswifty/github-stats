@@ -18,7 +18,6 @@ export const Profile: FC = () => {
         console.log(error)
         return <span>Something went wrong...</span>
     }
-
     return (
         <div>
             YOUR LOGIN - {login}

@@ -6,6 +6,8 @@ import { isUserLoggedIn } from "@/apollo/queries/local/__generated__/isUserLogge
 import { Route, Routes } from "react-router-dom";
 import { Profile } from "@/ui/pages/profile";
 import { ProtectedRoute } from "@/ui/components/common/ProtectedRoute";
+import { MainLayout } from "@/ui/layouts/MainLayout";
+import { Navigation } from "@/ui/components/Navigation";
 
 interface IRoute {
     path: string
@@ -35,34 +37,38 @@ const App = () => {
     const { data } = useQuery<isUserLoggedIn>(IS_LOGGED_IN)
     const isAuth = data?.isLoggedIn
 
-    return <div className="App">
-        <Routes>
+    return (
+        <MainLayout backgroundColor='bg-slate-700'>
             {
-                isAuth !== undefined && ROUTES.map(e => {
-                    if (e.isAuthRequired) {
-                        return <Route
-                            key={e.id}
-                            path={e.path}
-                            element={
-                                <ProtectedRoute
-                                    isAuthenticated={isAuth}
-                                    authenticationPath="/auth"
-                                    outlet={<e.component />}
+                isAuth !== undefined &&
+                <Navigation /> &&
+                <Routes>
+                    {
+                        ROUTES.map(e => {
+                            if (e.isAuthRequired) {
+                                return <Route
+                                    key={e.id}
+                                    path={e.path}
+                                    element={
+                                        <ProtectedRoute
+                                            isAuthenticated={isAuth}
+                                            outlet={<e.component/>}
+                                        />
+                                    }
+                                />
+                            } else {
+                                return <Route
+                                    path={e.path}
+                                    element={<e.component/>}
+                                    key={e.id}
                                 />
                             }
-                        />
+                        })
                     }
-                    else {
-                        return <Route
-                            path={e.path}
-                            element={<e.component />}
-                            key={e.id}
-                        />
-                    }
-                })
+                </Routes>
             }
-        </Routes>
-    </div>
+        </MainLayout>
+    )
 };
 
 export default App;

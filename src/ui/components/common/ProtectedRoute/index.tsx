@@ -3,13 +3,13 @@ import React from "react";
 
 export type ProtectedRouteProps = {
     isAuthenticated: boolean;
-    authenticationPath: string;
+    authenticationPath?: string;
     outlet: JSX.Element;
 }
 
 export const ProtectedRoute = ({
     isAuthenticated,
-    authenticationPath,
+    authenticationPath = "/auth",
     outlet
 }: ProtectedRouteProps) => {
     if (isAuthenticated) {

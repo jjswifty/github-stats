@@ -7,7 +7,6 @@ import { Route, Routes } from "react-router-dom";
 import { Profile } from "@/ui/pages/profile";
 import { ProtectedRoute } from "@/ui/components/common/ProtectedRoute";
 import { MainLayout } from "@/ui/layouts/MainLayout";
-import { Navigation } from "@/ui/components/Navigation";
 
 interface IRoute {
     path: string
@@ -38,10 +37,11 @@ const App = () => {
     const isAuth = data?.isLoggedIn
 
     return (
-        <MainLayout backgroundColor='bg-slate-700'>
+        <MainLayout
+            isAuth={isAuth}
+        >
             {
                 isAuth !== undefined &&
-                <Navigation /> &&
                 <Routes>
                     {
                         ROUTES.map(e => {

@@ -3,6 +3,7 @@ import {storage} from "@/lib/storage";
 import { useQuery } from "@apollo/client";
 import { GET_ME } from "@/apollo/queries/me";
 import { Me, MeVariables } from "@/apollo/queries/__generated__/Me"
+import { GlitchText } from "@/ui/components/common/GlitchText";
 
 export const Profile: FC = () => {
 
@@ -20,7 +21,7 @@ export const Profile: FC = () => {
     }
     return (
         <div>
-            YOUR LOGIN - {login}
+            <GlitchText fontSize={30}>Greetings, {login}</GlitchText>
             <span>{data?.user?.bio}</span>
         </div>
     )
